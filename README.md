@@ -6,8 +6,6 @@
   [![dev.to](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white)](https://dev.to/marxon)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/varga-mark-61796a197)
   [![Website](https://img.shields.io/badge/Website-%23121011.svg?style=for-the-badge&logo=google-chrome&logoColor=white)](https://vargamark.com)
-  [![X](https://img.shields.io/badge/X-%23000000.svg?style=for-the-badge&logo=x&logoColor=white)](https://x.com/Marxolution)
-
 
 </div>
 
