@@ -3,7 +3,7 @@
 
 <div align="center">
 
-  [![dev.to](https://img.shields.io/badge/dev.to-0A0A0A?style=for-the-badge&logo=devdotto&logoColor=white)](https://dev.to/marxon)
+  [![Dev.to followers](https://img.shields.io/badge/dynamic/json?color=0A0A0A&label=Dev.to%20Followers&query=followers_count&url=https%3A%2F%2Fdev.to%2Fapi%2Fusers%2Fby_username%3Furl%3Dmarxon&logo=dev.to&style=for-the-badge)](https://dev.to/marxon)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/varga-mark-61796a197)
   [![Website](https://img.shields.io/badge/Website-%23121011.svg?style=for-the-badge&logo=google-chrome&logoColor=white)](https://vargamark.com)
 
@@ -58,14 +58,6 @@
   ![Docker](https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white)
 
 </div>
-
-<h2 align="center">📊 DEV.to followers:</h2>
-
-<div align="center">
-  ![Dev.to followers]([https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white](https://img.shields.io/badge/dynamic/json?color=0A0A0A&label=dev.to%20followers&query=followers_count&url=https%3A%2F%2Fdev.to%2Fapi%2Fusers%2Fby_username%3Furl%3Dmarxon&logo=dev.to&style=for-the-badge))
-</div>
-
-
 
 <h2 align="center">📊 GitHub Stats:</h2>
 
