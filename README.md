@@ -3,7 +3,7 @@
 
 <div align="center">
 
-  ![Dev.to Followers](https://img.shields.io/badge/Dev.to%20Followers-0000-0A0A0A?style=for-the-badge&logo=devdotto)
+  ![Dev.to Followers](https://img.shields.io/badge/Dev.to%20Followers-null-0A0A0A?style=for-the-badge&logo=devdotto)
   [![LinkedIn](https://img.shields.io/badge/LinkedIn-%230077B5.svg?logo=linkedin&logoColor=white)](https://linkedin.com/in/varga-mark-61796a197)
   [![Website](https://img.shields.io/badge/Website-%23121011.svg?style=for-the-badge&logo=google-chrome&logoColor=white)](https://vargamark.com)
 
