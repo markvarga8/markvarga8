@@ -1,0 +1,33 @@
+name: Update Dev.to Followers Badge
+
+on:
+  schedule:
+    - cron: "0 * * * *"
+  workflow_dispatch:
+
+jobs:
+  update:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      - name: Fetch Dev.to followers
+        id: devto
+        run: |
+          followers=$(curl -s "https://dev.to/api/users/by_username?url=marxon" | jq '.followers_count')
+          echo "followers=$followers" >> $GITHUB_OUTPUT
+
+      - name: Update README
+        run: |
+          followers=${{ steps.devto.outputs.followers }}
+          sed -i "s/Dev.to%20Followers-[0-9]*/Dev.to%20Followers-$followers/" README.md
+
+      - name: Commit changes
+        run: |
+          git config user.name "GitHub Actions"
+          git config user.email "actions@github.com"
+          git add README.md
+          git commit -m "Update Dev.to follower count to ${{ steps.devto.outputs.followers }}" || echo "No changes to commit"
+          git push
