@@ -59,6 +59,12 @@
 
 </div>
 
+<h2 align="center">📊 DEV.to followers:</h2>
+
+<div align="center">
+  ![Dev.to followers]([https://img.shields.io/badge/docker-%230db7ed.svg?style=for-the-badge&logo=docker&logoColor=white](https://img.shields.io/badge/dynamic/json?color=0A0A0A&label=dev.to%20followers&query=followers_count&url=https%3A%2F%2Fdev.to%2Fapi%2Fusers%2Fby_username%3Furl%3Dmarxon&logo=dev.to&style=for-the-badge))
+</div>
+
 
 
 <h2 align="center">📊 GitHub Stats:</h2>
