@@ -1,0 +1,108 @@
+name: Generate Terminal GitHub Stats
+
+on:
+  schedule:
+    - cron: "0 5 * * *" # minden nap 05:00 UTC
+  workflow_dispatch: {}  # kézzel is indítható
+
+jobs:
+  build-stats:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write  # kell a commitoláshoz
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Generate terminal stats SVG
+        uses: actions/github-script@v7
+        with:
+          github-token: ${{ secrets.GITHUB_TOKEN }}
+          script: |
+            const fs = require("fs");
+
+            const username = "markvarga8";
+
+            // User adatok
+            const { data: user } = await github.rest.users.getByUsername({ username });
+
+            // Repo lista (minden public)
+            const repos = await github.paginate(
+              github.rest.repos.listForUser,
+              { username, per_page: 100 }
+            );
+
+            const publicRepos = repos.length;
+            const totalStars = repos.reduce((sum, r) => sum + (r.stargazers_count || 0), 0);
+            const totalForks = repos.reduce((sum, r) => sum + (r.forks_count || 0), 0);
+
+            // Top language
+            const langCounts = {};
+            for (const r of repos) {
+              if (r.language) {
+                langCounts[r.language] = (langCounts[r.language] || 0) + 1;
+              }
+            }
+            const topLang = Object.entries(langCounts)
+              .sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
+
+            const lines = [
+              `user: ${username}`,
+              `public repos: ${publicRepos}`,
+              `total stars: ${totalStars}`,
+              `total forks: ${totalForks}`,
+              `followers: ${user.followers}`,
+              `top language: ${topLang}`,
+            ];
+
+            const width = 520;
+            const lineHeight = 24;
+            const padding = 24;
+            const height = padding * 2 + lineHeight * (lines.length + 2);
+
+            const svgLines = lines
+              .map(
+                (text, i) =>
+                  `<text x="${padding}" y="${
+                    padding + lineHeight * (i + 1)
+                  }" fill="#00ff7f" font-family="Fira Code, Menlo, monospace" font-size="16">&gt; ${text}</text>`
+              )
+              .join("\n");
+
+            const svg = `
+<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">
+  <style>
+    @keyframes cursor-blink {
+      0%, 50% { opacity: 1; }
+      50.01%, 100% { opacity: 0; }
+    }
+  </style>
+  <rect width="100%" height="100%" fill="#050816" rx="14" />
+  <text x="${padding}" y="${padding - 6}" fill="#00ff7f"
+        font-family="Fira Code, Menlo, monospace" font-size="14">
+    Marxolution // terminal.stats
+  </text>
+  ${svgLines}
+  <text x="${padding + 8}" y="${padding + lineHeight * (lines.length + 1)}"
+        fill="#00ff7f" font-family="Fira Code, Menlo, monospace"
+        font-size="16" style="animation: cursor-blink 1s step-start infinite;">
+    _
+  </text>
+</svg>
+`.trim();
+
+            fs.mkdirSync("assets", { recursive: true });
+            fs.writeFileSync("assets/terminal-stats.svg", svg + "\n");
+
+      - name: Commit changes
+        run: |
+          if git status --porcelain | grep 'assets/terminal-stats.svg'; then
+            git config --local user.email "github-actions[bot]@users.noreply.github.com"
+            git config --local user.name "github-actions[bot]"
+            git add assets/terminal-stats.svg
+            git commit -m "📟 Update terminal stats SVG"
+            git push
+          else
+            echo "No changes to commit."
+          fi
