@@ -17,11 +17,10 @@ jobs:
         run: sudo apt-get install jq -y
 
       - name: Fetch latest dev.to articles
-        id: devto
         run: |
           curl -s "https://dev.to/api/articles?username=marxon&per_page=5" > devto.json
 
-      - name: Build markdown list
+      - name: Build article list
         id: build
         run: |
           list=$(jq -r '.[] | "- [" + .title + "](" + .url + ")"' devto.json)
@@ -29,16 +28,29 @@ jobs:
           echo "$list" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Update README
+      - name: Update README safely
         run: |
           list="${{ steps.build.outputs.list }}"
-          
-          sed -i "/<!-- DEVTO-LIST:START -->/,/<!-- DEVTO-LIST:END -->/c\\<!-- DEVTO-LIST:START -->\n$list\n<!-- DEVTO-LIST:END -->" README.md
+
+          start="<!-- DEVTO-LIST:START -->"
+          end="<!-- DEVTO-LIST:END -->"
+
+          # Az egész README tartalmát beolvassuk
+          content=$(cat README.md)
+
+          # Kicseréljük a blokkot escape problémák nélkül
+          new_content=$(echo "$content" | awk -v start="$start" -v end="$end" -v repl="$list" '
+            $0 ~ start { print start; print repl; skip=1; next }
+            $0 ~ end   { print end; skip=0; next }
+            skip != 1  { print }
+          ')
+
+          printf "%s" "$new_content" > README.md
 
       - name: Commit changes
         run: |
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "🔄 Update latest dev.to articles" || echo "No changes"
+          git commit -m "🔄 Update latest dev.to articles" || echo "No changes to commit"
           git push
