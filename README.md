@@ -11,19 +11,57 @@
 
 ## 📝 Latest DEV.to Articles
 <!-- DEVTO-LIST:START -->
-
 <table>
-  <tr>
-    <td width="200">
-      <img src="COVER_URL" width="200" />
-    </td>
-    <td>
-      <a href="ARTICLE_URL"><b>ARTICLE_TITLE</b></a><br/>
-      <sub>Short description here...</sub>
-    </td>
-  </tr>
-</table>
+<tr>
+  <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2dy5xhz0gtcjejln7033.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/developers-vs-ai-are-we-becoming-ai-managers-instead-of-coders-5ef3><b>Developers vs AI: Are We Becoming AI Managers Instead of Coders?</b></a><br/>
+    <sub>AI is no longer a shiny add-on in our workflow, it’s the silent co-worker sitting next to us every...</sub>
+  </td>
+</tr>
 
+<tr>
+  <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fa2hssh0b81mj9irp8jjb.jpg width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/developers-vs-ai-how-smart-tools-make-us-dumber-coders-k51><b>Developers vs AI: How Smart Tools Make Us Dumber Coders</b></a><br/>
+    <sub>A few months ago, I realized I hadn’t written a regex by hand in weeks. Not because I suddenly...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2n8o028d2njc0u1d5exn.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/aws-went-down-the-internet-panicked-heres-what-it-means-for-all-of-us-1cmm><b>AWS Went Down. The Internet Panicked. Here's What It Means for All of Us.</b></a><br/>
+    <sub>Yesterday, the internet had a bad day — and so did millions of users and businesses around the world....</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frpqghknxtb9s88pflijo.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/the-next-developer-skill-knowing-what-not-to-automate-2hh9><b>The Next Developer Skill: Knowing What NOT to Automate</b></a><br/>
+    <sub>We automate to save time — but somehow, we always end up using that time to automate even more.  AI...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F96h3fomtd2duqjc82nfd.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/developers-vs-ai-helpful-partner-or-dangerous-shortcut-37fa><b>Developers vs AI: Helpful Partner or Dangerous Shortcut?</b></a><br/>
+    <sub>Artificial Intelligence has exploded into the developer workflow. Tools like ChatGPT, GitHub Copilot,...</sub>
+  </td>
+</tr>
+</table>
 <!-- DEVTO-LIST:END -->
 
 
