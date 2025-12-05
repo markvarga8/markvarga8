@@ -1,21 +1,3 @@
-name: Generate Terminal Contribution Stats
-
-on:
-  workflow_dispatch:
-  schedule:
-    - cron: "0 5 * * *"
-
-permissions:
-  contents: write
-
-jobs:
-  generate:
-    runs-on: ubuntu-latest
-
-    steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
       - name: Generate terminal SVG
         uses: actions/github-script@v7
         with:
@@ -23,12 +5,19 @@ jobs:
             const fs = require("fs");
             const username = "markvarga8";
 
-            // === Get real GitHub contribution stats ===
+            // === Prepare date range: last 12 months ===
+            const now = new Date();
+            const fromDate = new Date();
+            fromDate.setUTCFullYear(now.getUTCFullYear() - 1);
+            const from = fromDate.toISOString();
+            const to = now.toISOString();
+
+            // === GraphQL query for last 12 months ===
             const query = `
-              query($username: String!) {
+              query($username: String!, $from: DateTime!, $to: DateTime!) {
                 user(login: $username) {
                   name
-                  contributionsCollection {
+                  contributionsCollection(from: $from, to: $to) {
                     contributionCalendar {
                       totalContributions
                     }
@@ -40,23 +29,23 @@ jobs:
               }
             `;
 
-            const result = await github.graphql(query, { username });
+            const result = await github.graphql(query, { username, from, to });
 
             const user = result.user;
 
             const name = user.name || username;
-            const totalContributions = user.contributionsCollection.contributionCalendar.totalContributions;
-            const commitContrib = user.contributionsCollection.totalCommitContributions;
-            const prContrib = user.contributionsCollection.totalPullRequestContributions;
-            const issueContrib = user.contributionsCollection.totalIssueContributions;
+            const totalContrib = user.contributionsCollection.contributionCalendar.totalContributions;
+            const commits = user.contributionsCollection.totalCommitContributions;
+            const prs = user.contributionsCollection.totalPullRequestContributions;
+            const issues = user.contributionsCollection.totalIssueContributions;
 
-            // === Lines to show (clean and focused) ===
+            // === Lines shown on card ===
             const lines = [
               `user: ${name}`,
-              `contributions last year: ${totalContributions}`,
-              `commits: ${commitContrib}`,
-              `pull requests: ${prContrib}`,
-              `issues: ${issueContrib}`
+              `contributions (last 12 months): ${totalContrib}`,
+              `commits: ${commits}`,
+              `pull requests: ${prs}`,
+              `issues: ${issues}`
             ];
 
             const width = 520;
@@ -80,11 +69,3 @@ jobs:
 
             fs.mkdirSync("assets", { recursive: true });
             fs.writeFileSync("assets/terminal-stats.svg", svg);
-
-      - name: Commit SVG
-        run: |
-          git config user.email "github-actions[bot]@users.noreply.github.com"
-          git config user.name "github-actions[bot]"
-          git add assets/terminal-stats.svg
-          git commit -m "Update terminal contribution stats" || echo "No changes"
-          git push
