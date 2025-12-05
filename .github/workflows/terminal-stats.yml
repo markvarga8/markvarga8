@@ -3,7 +3,7 @@ name: Generate Terminal Stats
 on:
   workflow_dispatch:
   schedule:
-    - cron: "0 5 * * *" # minden nap 05:00 UTC
+    - cron: "0 5 * * *"
 
 permissions:
   contents: write
@@ -23,35 +23,44 @@ jobs:
             const fs = require("fs");
             const username = "markvarga8";
 
-            // Fetch user profile
-            const user = (await github.rest.users.getByUsername({ username })).data;
+            //
+            // === FETCH CONTRIBUTION STATS VIA GRAPHQL ===
+            //
+            const query = `
+              query($username: String!) {
+                user(login: $username) {
+                  name
+                  contributionsCollection {
+                    contributionCalendar {
+                      totalContributions
+                    }
+                    totalCommitContributions
+                    totalPullRequestContributions
+                    totalIssueContributions
+                  }
+                }
+              }
+            `;
 
-            // Fetch repos
-            const repos = await github.paginate(
-              github.rest.repos.listForUser,
-              { username, per_page: 100 }
-            );
+            const result = await github.graphql(query, { username });
 
-            const publicRepos = repos.length;
-            const totalStars = repos.reduce((a, r) => a + (r.stargazers_count || 0), 0);
-            const totalForks = repos.reduce((a, r) => a + (r.forks_count || 0), 0);
-            const followers = user.followers;
+            const user = result.user;
 
-            const langCount = {};
-            repos.forEach(r => {
-              if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1;
-            });
+            const name = user.name || username;
+            const totalContrib = user.contributionsCollection.contributionCalendar.totalContributions;
+            const commitContrib = user.contributionsCollection.totalCommitContributions;
+            const prContrib = user.contributionsCollection.totalPullRequestContributions;
+            const issueContrib = user.contributionsCollection.totalIssueContributions;
 
-            const topLang = Object.entries(langCount)
-              .sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
-
+            //
+            // === BUILD TERMINAL CONTENT ===
+            //
             const lines = [
-              `user: ${username}`,
-              `public repos: ${publicRepos}`,
-              `total stars: ${totalStars}`,
-              `total forks: ${totalForks}`,
-              `followers: ${followers}`,
-              `top language: ${topLang}`
+              `user: ${name}`,
+              `contributions last year: ${totalContrib}`,
+              `commits: ${commitContrib}`,
+              `pull requests: ${prContrib}`,
+              `issues: ${issueContrib}`
             ];
 
             const width = 520;
@@ -59,6 +68,9 @@ jobs:
             const padding = 24;
             const height = padding * 2 + lineHeight * (lines.length + 2);
 
+            //
+            // === GENERATE SVG ===
+            //
             let svg = "";
             svg += `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`;
             svg += `<style>@keyframes blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}</style>`;
@@ -80,5 +92,5 @@ jobs:
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
           git add -A
-          git commit -m "Update terminal stats" || echo "No changes to commit"
+          git commit -m "Update terminal contribution stats" || echo "No changes"
           git push
