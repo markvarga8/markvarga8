@@ -113,10 +113,18 @@
 </table>
 <!-- DEVTO-LIST:END -->
 
-<h2 align="center">📊 GitHub Stats:</h2>
-
 <div align="center">
-  <img src="https://github-readme-stats.vercel.app/api/top-langs/?username=markvarga8&theme=dark&hide_border=false&include_all_commits=true&count_private=true&layout=compact" />
+
+  ![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00DC82&center=true&vCenter=true&width=435&lines=Hi+I'm+Mark;Frontend+Developer;Vue+%2F+Nuxt+%2F+React+Engineer;AI+%2F+Automation+Enthusiast)
+  
+  <br/>
+  
+  <h2 align="center">📟 Terminal Stats</h2>
+
+  <div align="center">
+    <img src="assets/terminal-stats.svg" alt="Mark's terminal-style GitHub stats" />
+  </div>
+
 </div>
 
 
