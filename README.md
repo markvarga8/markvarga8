@@ -122,7 +122,7 @@
   <h2 align="center">📟 Terminal Stats</h2>
 
   <div align="center">
-    <img src="assets/terminal-stats.svg" alt="Mark's terminal-style GitHub stats" />
+    <img src="https://raw.githubusercontent.com/markvarga8/markvarga8/main/assets/terminal-stats.svg" width="520" />
   </div>
 
 </div>
