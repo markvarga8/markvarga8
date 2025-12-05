@@ -11,11 +11,19 @@
 
 ## 📝 Latest DEV.to Articles
 <!-- DEVTO-LIST:START -->
-- [Developers vs AI: Are We Becoming AI Managers Instead of Coders?](https://dev.to/marxon/developers-vs-ai-are-we-becoming-ai-managers-instead-of-coders-5ef3)
-- [Developers vs AI: How Smart Tools Make Us Dumber Coders](https://dev.to/marxon/developers-vs-ai-how-smart-tools-make-us-dumber-coders-k51)
-- [AWS Went Down. The Internet Panicked. Here's What It Means for All of Us.](https://dev.to/marxon/aws-went-down-the-internet-panicked-heres-what-it-means-for-all-of-us-1cmm)
-- [The Next Developer Skill: Knowing What NOT to Automate](https://dev.to/marxon/the-next-developer-skill-knowing-what-not-to-automate-2hh9)
-- [Developers vs AI: Helpful Partner or Dangerous Shortcut?](https://dev.to/marxon/developers-vs-ai-helpful-partner-or-dangerous-shortcut-37fa)
+
+<table>
+  <tr>
+    <td width="200">
+      <img src="COVER_URL" width="200" />
+    </td>
+    <td>
+      <a href="ARTICLE_URL"><b>ARTICLE_TITLE</b></a><br/>
+      <sub>Short description here...</sub>
+    </td>
+  </tr>
+</table>
+
 <!-- DEVTO-LIST:END -->
 
 

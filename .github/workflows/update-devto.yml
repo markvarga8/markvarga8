@@ -1,4 +1,4 @@
-name: Update Dev.to Articles in README
+name: Update Dev.to Articles in README (Thumbnails)
 
 on:
   schedule:
@@ -20,26 +20,39 @@ jobs:
         run: |
           curl -s "https://dev.to/api/articles?username=marxon&per_page=5" > devto.json
 
-      - name: Build article list
+      - name: Build HTML table
         id: build
         run: |
-          list=$(jq -r '.[] | "- [" + .title + "](" + .url + ")"' devto.json)
-          echo "list<<EOF" >> $GITHUB_OUTPUT
-          echo "$list" >> $GITHUB_OUTPUT
+          # Build one <tr> row per article
+          rows=$(jq -r '
+            .[] |
+            "<tr>\n" +
+            "  <td width=\"200\">\n" +
+            "    <img src=\"" + (.cover_image // "") + "\" width=\"200\" />\n" +
+            "  </td>\n" +
+            "  <td>\n" +
+            "    <a href=\"" + .url + "\"><b>" + .title + "</b></a><br/>\n" +
+            "    <sub>" + (.description | gsub("\n"; " ")) + "</sub>\n" +
+            "  </td>\n" +
+            "</tr>\n"
+          ' devto.json)
+
+          echo "table<<EOF" >> $GITHUB_OUTPUT
+          echo "<table>" >> $GITHUB_OUTPUT
+          echo "$rows" >> $GITHUB_OUTPUT
+          echo "</table>" >> $GITHUB_OUTPUT
           echo "EOF" >> $GITHUB_OUTPUT
 
-      - name: Update README safely
+      - name: Update README
         run: |
-          list="${{ steps.build.outputs.list }}"
+          table="${{ steps.build.outputs.table }}"
 
           start="<!-- DEVTO-LIST:START -->"
           end="<!-- DEVTO-LIST:END -->"
 
-          # Az egész README tartalmát beolvassuk
           content=$(cat README.md)
 
-          # Kicseréljük a blokkot escape problémák nélkül
-          new_content=$(echo "$content" | awk -v start="$start" -v end="$end" -v repl="$list" '
+          new_content=$(echo "$content" | awk -v start="$start" -v end="$end" -v repl="$table" '
             $0 ~ start { print start; print repl; skip=1; next }
             $0 ~ end   { print end; skip=0; next }
             skip != 1  { print }
@@ -52,5 +65,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "🔄 Update latest dev.to articles" || echo "No changes to commit"
+          git commit -m "🖼️ Update latest DEV.to article thumbnails" || echo "No changes"
           git push
