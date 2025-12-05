@@ -1,4 +1,4 @@
-name: Generate Terminal Stats
+name: Generate Terminal Contribution Stats
 
 on:
   workflow_dispatch:
@@ -13,19 +13,17 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Checkout
+      - name: Checkout repo
         uses: actions/checkout@v4
 
-      - name: Generate terminal stats SVG
+      - name: Generate terminal SVG
         uses: actions/github-script@v7
         with:
           script: |
             const fs = require("fs");
             const username = "markvarga8";
 
-            //
-            // === FETCH CONTRIBUTION STATS VIA GRAPHQL ===
-            //
+            // === Get real GitHub contribution stats ===
             const query = `
               query($username: String!) {
                 user(login: $username) {
@@ -47,17 +45,15 @@ jobs:
             const user = result.user;
 
             const name = user.name || username;
-            const totalContrib = user.contributionsCollection.contributionCalendar.totalContributions;
+            const totalContributions = user.contributionsCollection.contributionCalendar.totalContributions;
             const commitContrib = user.contributionsCollection.totalCommitContributions;
             const prContrib = user.contributionsCollection.totalPullRequestContributions;
             const issueContrib = user.contributionsCollection.totalIssueContributions;
 
-            //
-            // === BUILD TERMINAL CONTENT ===
-            //
+            // === Lines to show (clean and focused) ===
             const lines = [
               `user: ${name}`,
-              `contributions last year: ${totalContrib}`,
+              `contributions last year: ${totalContributions}`,
               `commits: ${commitContrib}`,
               `pull requests: ${prContrib}`,
               `issues: ${issueContrib}`
@@ -68,9 +64,7 @@ jobs:
             const padding = 24;
             const height = padding * 2 + lineHeight * (lines.length + 2);
 
-            //
-            // === GENERATE SVG ===
-            //
+            // === Build SVG ===
             let svg = "";
             svg += `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`;
             svg += `<style>@keyframes blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}</style>`;
@@ -87,10 +81,10 @@ jobs:
             fs.mkdirSync("assets", { recursive: true });
             fs.writeFileSync("assets/terminal-stats.svg", svg);
 
-      - name: Commit and push
+      - name: Commit SVG
         run: |
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git config user.name "github-actions[bot]"
-          git add -A
+          git add assets/terminal-stats.svg
           git commit -m "Update terminal contribution stats" || echo "No changes"
           git push
