@@ -112,20 +112,3 @@
 </tr>
 </table>
 <!-- DEVTO-LIST:END -->
-
-<div align="center">
-
-  ![Typing SVG](https://readme-typing-svg.demolab.com?font=Fira+Code&pause=1000&color=00DC82&center=true&vCenter=true&width=435&lines=Hi+I'm+Mark;Frontend+Developer;Vue+%2F+Nuxt+%2F+React+Engineer;AI+%2F+Automation+Enthusiast)
-  
-  <br/>
-  
-  <h2 align="center">📟 Terminal Stats</h2>
-
-  <div align="center">
-    <img src="https://raw.githubusercontent.com/markvarga8/markvarga8/main/assets/terminal-stats.svg" width="520" />
-  </div>
-
-</div>
-
-
-<!-- Proudly created with GPRM ( https://gprm.itsvg.in ) -->
