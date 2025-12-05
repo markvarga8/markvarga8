@@ -9,6 +9,10 @@
 
 </div>
 
+## 📝 Latest DEV.to Articles
+<!-- DEVTO-LIST:START -->
+<!-- DEVTO-LIST:END -->
+
 
 <h2 align="center">💻 Tech Stack:</h2>
 
