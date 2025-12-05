@@ -1,30 +1,30 @@
-name: Generate Terminal GitHub Stats
+name: Generate Terminal Stats
 
 on:
+  workflow_dispatch:
   schedule:
-    - cron: "0 5 * * *"
-  workflow_dispatch: {}
+    - cron: "0 5 * * *" # minden nap 05:00 UTC
+
+permissions:
+  contents: write
 
 jobs:
-  build-stats:
+  generate:
     runs-on: ubuntu-latest
-    permissions:
-      contents: write
 
     steps:
-      - name: Checkout repo
+      - name: Checkout
         uses: actions/checkout@v4
 
       - name: Generate terminal stats SVG
         uses: actions/github-script@v7
         with:
-          github-token: ${{ secrets.GITHUB_TOKEN }}
           script: |
             const fs = require("fs");
             const username = "markvarga8";
 
             // Fetch user profile
-            const { data: user } = await github.rest.users.getByUsername({ username });
+            const user = (await github.rest.users.getByUsername({ username })).data;
 
             // Fetch repos
             const repos = await github.paginate(
@@ -33,25 +33,24 @@ jobs:
             );
 
             const publicRepos = repos.length;
-            const totalStars = repos.reduce((s, r) => s + (r.stargazers_count || 0), 0);
-            const totalForks = repos.reduce((s, r) => s + (r.forks_count || 0), 0);
+            const totalStars = repos.reduce((a, r) => a + (r.stargazers_count || 0), 0);
+            const totalForks = repos.reduce((a, r) => a + (r.forks_count || 0), 0);
+            const followers = user.followers;
 
-            const langCounts = {};
-            for (const r of repos) {
-              if (r.language) {
-                langCounts[r.language] = (langCounts[r.language] || 0) + 1;
-              }
-            }
+            const langCount = {};
+            repos.forEach(r => {
+              if (r.language) langCount[r.language] = (langCount[r.language] || 0) + 1;
+            });
 
-            const topLang =
-              Object.entries(langCounts).sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
+            const topLang = Object.entries(langCount)
+              .sort((a, b) => b[1] - a[1])[0]?.[0] || "N/A";
 
             const lines = [
               `user: ${username}`,
               `public repos: ${publicRepos}`,
               `total stars: ${totalStars}`,
               `total forks: ${totalForks}`,
-              `followers: ${user.followers}`,
+              `followers: ${followers}`,
               `top language: ${topLang}`
             ];
 
@@ -60,37 +59,26 @@ jobs:
             const padding = 24;
             const height = padding * 2 + lineHeight * (lines.length + 2);
 
-            // Build <text> lines
-            let svgLines = "";
-            lines.forEach((text, i) => {
-              svgLines +=
-                `<text x="${padding}" y="${padding + lineHeight * (i + 1)}" ` +
-                `fill="#00ff7f" font-family="Fira Code, Menlo, monospace" font-size="16">&gt; ${text}</text>\n`;
-            });
-
-            // Build full SVG (NO TEMPLATE LITERALS)
             let svg = "";
             svg += `<svg xmlns="http://www.w3.org/2000/svg" width="${width}" height="${height}" viewBox="0 0 ${width} ${height}">`;
-            svg += `<style>@keyframes cursor-blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}</style>`;
+            svg += `<style>@keyframes blink{0%,50%{opacity:1;}50.01%,100%{opacity:0;}}</style>`;
             svg += `<rect width="100%" height="100%" fill="#050816" rx="14"/>`;
-            svg += `<text x="${padding}" y="${padding - 6}" fill="#00ff7f" font-family="Fira Code, Menlo, monospace" font-size="14">Marxolution // terminal.stats</text>`;
-            svg += svgLines;
-            svg += `<text x="${padding + 8}" y="${padding + lineHeight * (lines.length + 1)}" `;
-            svg += `fill="#00ff7f" font-family="Fira Code, Menlo, monospace" font-size="16" `;
-            svg += `style="animation: cursor-blink 1s step-start infinite;">_</text>`;
+            svg += `<text x="${padding}" y="${padding - 6}" fill="#00ff7f" font-family="monospace" font-size="14">Marxolution // terminal.stats</text>`;
+
+            lines.forEach((text, i) => {
+              svg += `<text x="${padding}" y="${padding + lineHeight * (i + 1)}" fill="#00ff7f" font-family="monospace" font-size="16">&gt; ${text}</text>`;
+            });
+
+            svg += `<text x="${padding + 8}" y="${padding + lineHeight * (lines.length + 1)}" fill="#00ff7f" font-family="monospace" font-size="16" style="animation: blink 1s infinite;">_</text>`;
             svg += `</svg>`;
 
             fs.mkdirSync("assets", { recursive: true });
             fs.writeFileSync("assets/terminal-stats.svg", svg);
 
-      - name: Commit changes
+      - name: Commit and push
         run: |
-          if git status --porcelain | grep 'assets/terminal-stats.svg'; then
-            git config --local user.email "github-actions[bot]@users.noreply.github.com"
-            git config --local user.name "github-actions[bot]"
-            git add assets/terminal-stats.svg
-            git commit -m "📟 Update terminal stats"
-            git push
-          else
-            echo "No changes."
-          fi
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git config user.name "github-actions[bot]"
+          git add -A
+          git commit -m "Update terminal stats" || echo "No changes to commit"
+          git push
