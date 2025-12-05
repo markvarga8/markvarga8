@@ -2,8 +2,8 @@ name: Update Dev.to Articles in README
 
 on:
   schedule:
-    - cron: "0 6 * * *" # minden nap 06:00 UTC
-  workflow_dispatch: {} # manuálisan is indítható
+    - cron: "0 6 * * *"
+  workflow_dispatch: {}
 
 jobs:
   update-readme:
@@ -13,23 +13,26 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v3
 
+      - name: Install jq
+        run: sudo apt-get install jq -y
+
       - name: Fetch latest dev.to articles
         id: devto
         run: |
-          response=$(curl -s "https://dev.to/api/articles?username=marxon&per_page=5")
-          echo "json=$response" >> $GITHUB_OUTPUT
+          curl -s "https://dev.to/api/articles?username=marxon&per_page=5" > devto.json
 
       - name: Build markdown list
         id: build
         run: |
-          articles=$(echo '${{ steps.devto.outputs.json }}' | jq -r '.[] | "- [" + .title + "](" + .url + ")"')
-          echo "list=$articles" >> $GITHUB_OUTPUT
+          list=$(jq -r '.[] | "- [" + .title + "](" + .url + ")"' devto.json)
+          echo "list<<EOF" >> $GITHUB_OUTPUT
+          echo "$list" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
 
       - name: Update README
         run: |
           list="${{ steps.build.outputs.list }}"
-
-          # cseréli a jelölők közötti részt
+          
           sed -i "/<!-- DEVTO-LIST:START -->/,/<!-- DEVTO-LIST:END -->/c\\<!-- DEVTO-LIST:START -->\n$list\n<!-- DEVTO-LIST:END -->" README.md
 
       - name: Commit changes
@@ -37,5 +40,5 @@ jobs:
           git config --local user.email "github-actions[bot]@users.noreply.github.com"
           git config --local user.name "github-actions[bot]"
           git add README.md
-          git commit -m "🔄 Update latest dev.to articles" || echo "No changes to commit"
+          git commit -m "🔄 Update latest dev.to articles" || echo "No changes"
           git push
