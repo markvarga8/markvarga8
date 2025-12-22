@@ -63,6 +63,16 @@
 <table>
 <tr>
   <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fgtkxhi73zr8x5uga6pbk.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/developers-vs-ai-a-holiday-reflection-what-kind-of-developer-do-you-want-to-be-j1><b>Developers vs AI: A Holiday Reflection — What Kind of Developer Do You Want to Be?</b></a><br/>
+    <sub>December is a strange month for developers.  Deadlines slow down. Slack goes quiet. Pull requests...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
     <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2dy5xhz0gtcjejln7033.png width=200 />
   </td>
   <td>
@@ -98,16 +108,6 @@
   <td>
     <a href=https://dev.to/marxon/the-next-developer-skill-knowing-what-not-to-automate-2hh9><b>The Next Developer Skill: Knowing What NOT to Automate</b></a><br/>
     <sub>We automate to save time — but somehow, we always end up using that time to automate even more.  AI...</sub>
-  </td>
-</tr>
-
-<tr>
-  <td width=200>
-    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F96h3fomtd2duqjc82nfd.png width=200 />
-  </td>
-  <td>
-    <a href=https://dev.to/marxon/developers-vs-ai-helpful-partner-or-dangerous-shortcut-37fa><b>Developers vs AI: Helpful Partner or Dangerous Shortcut?</b></a><br/>
-    <sub>Artificial Intelligence has exploded into the developer workflow. Tools like ChatGPT, GitHub Copilot,...</sub>
   </td>
 </tr>
 </table>
