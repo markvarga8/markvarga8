@@ -63,6 +63,16 @@
 <table>
 <tr>
   <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkycom2ybolkcl3ggw3wh.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/the-best-developer-ai-tools-of-2025-what-actually-worked-in-real-projects-397d><b>The Best Developer AI Tools of 2025 — What Actually Worked in Real Projects</b></a><br/>
+    <sub>2025 was the year AI tools stopped being “nice to have” and became part of the default developer...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
     <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fgtkxhi73zr8x5uga6pbk.png width=200 />
   </td>
   <td>
@@ -98,16 +108,6 @@
   <td>
     <a href=https://dev.to/marxon/aws-went-down-the-internet-panicked-heres-what-it-means-for-all-of-us-1cmm><b>AWS Went Down. The Internet Panicked. Here's What It Means for All of Us.</b></a><br/>
     <sub>Yesterday, the internet had a bad day — and so did millions of users and businesses around the world....</sub>
-  </td>
-</tr>
-
-<tr>
-  <td width=200>
-    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Frpqghknxtb9s88pflijo.png width=200 />
-  </td>
-  <td>
-    <a href=https://dev.to/marxon/the-next-developer-skill-knowing-what-not-to-automate-2hh9><b>The Next Developer Skill: Knowing What NOT to Automate</b></a><br/>
-    <sub>We automate to save time — but somehow, we always end up using that time to automate even more.  AI...</sub>
   </td>
 </tr>
 </table>
