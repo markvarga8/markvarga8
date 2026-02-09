@@ -63,6 +63,16 @@
 <table>
 <tr>
   <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F15cb3he1mu5i5ieh9zsd.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/developer-vs-ai-new-season-same-question-whos-really-in-control-4nia><b>🥊 Developer vs AI – New Season, Same Question: Who’s Really in Control?</b></a><br/>
+    <sub>New year, new hype, same existential crisis.  If you’re a developer in 2026 and not thinking about...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
     <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkycom2ybolkcl3ggw3wh.png width=200 />
   </td>
   <td>
@@ -98,16 +108,6 @@
   <td>
     <a href=https://dev.to/marxon/developers-vs-ai-how-smart-tools-make-us-dumber-coders-k51><b>Developers vs AI: How Smart Tools Make Us Dumber Coders</b></a><br/>
     <sub>A few months ago, I realized I hadn’t written a regex by hand in weeks. Not because I suddenly...</sub>
-  </td>
-</tr>
-
-<tr>
-  <td width=200>
-    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2n8o028d2njc0u1d5exn.png width=200 />
-  </td>
-  <td>
-    <a href=https://dev.to/marxon/aws-went-down-the-internet-panicked-heres-what-it-means-for-all-of-us-1cmm><b>AWS Went Down. The Internet Panicked. Here's What It Means for All of Us.</b></a><br/>
-    <sub>Yesterday, the internet had a bad day — and so did millions of users and businesses around the world....</sub>
   </td>
 </tr>
 </table>
