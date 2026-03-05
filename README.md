@@ -63,6 +63,16 @@
 <table>
 <tr>
   <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkvsefxo5aa0oybsuekqg.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/-marxon-vs-ai-1-the-developer-who-doesnt-panic-5a1l><b>Marxon vs AI #1 - The Developer Who Doesn't Panic</b></a><br/>
+    <sub>A year ago, I was asking the same question everyone else was asking:  Will AI replace developers?  It...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
     <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F15cb3he1mu5i5ieh9zsd.png width=200 />
   </td>
   <td>
@@ -98,16 +108,6 @@
   <td>
     <a href=https://dev.to/marxon/developers-vs-ai-are-we-becoming-ai-managers-instead-of-coders-5ef3><b>Developers vs AI: Are We Becoming AI Managers Instead of Coders?</b></a><br/>
     <sub>AI is no longer a shiny add-on in our workflow, it’s the silent co-worker sitting next to us every...</sub>
-  </td>
-</tr>
-
-<tr>
-  <td width=200>
-    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fa2hssh0b81mj9irp8jjb.jpg width=200 />
-  </td>
-  <td>
-    <a href=https://dev.to/marxon/developers-vs-ai-how-smart-tools-make-us-dumber-coders-k51><b>Developers vs AI: How Smart Tools Make Us Dumber Coders</b></a><br/>
-    <sub>A few months ago, I realized I hadn’t written a regex by hand in weeks. Not because I suddenly...</sub>
   </td>
 </tr>
 </table>
