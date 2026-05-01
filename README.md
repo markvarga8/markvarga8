@@ -63,6 +63,16 @@
 <table>
 <tr>
   <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fafu2g6pub1l66nicvjzk.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/developers-vs-ai-can-you-spot-when-ai-is-wrong-7g7><b>Developers vs AI: Can You Spot When AI Is Wrong?</b></a><br/>
+    <sub>Developers vs AI is back.  And this time, I don’t want to talk about whether AI can write code.  It...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
     <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fkvsefxo5aa0oybsuekqg.png width=200 />
   </td>
   <td>
@@ -98,16 +108,6 @@
   <td>
     <a href=https://dev.to/marxon/developers-vs-ai-a-holiday-reflection-what-kind-of-developer-do-you-want-to-be-j1><b>Developers vs AI: A Holiday Reflection — What Kind of Developer Do You Want to Be?</b></a><br/>
     <sub>December is a strange month for developers.  Deadlines slow down. Slack goes quiet. Pull requests...</sub>
-  </td>
-</tr>
-
-<tr>
-  <td width=200>
-    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F2dy5xhz0gtcjejln7033.png width=200 />
-  </td>
-  <td>
-    <a href=https://dev.to/marxon/developers-vs-ai-are-we-becoming-ai-managers-instead-of-coders-5ef3><b>Developers vs AI: Are We Becoming AI Managers Instead of Coders?</b></a><br/>
-    <sub>AI is no longer a shiny add-on in our workflow, it’s the silent co-worker sitting next to us every...</sub>
   </td>
 </tr>
 </table>
