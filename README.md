@@ -63,6 +63,16 @@
 <table>
 <tr>
   <td width=200>
+    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2F0ncckxemh942ddy01ugc.png width=200 />
+  </td>
+  <td>
+    <a href=https://dev.to/marxon/the-best-developer-ai-tools-of-2026-q1-what-actually-changed-in-real-workflows-25l3><b>The Best Developer AI Tools of 2026 Q1 — What Actually Changed in Real Workflows</b></a><br/>
+    <sub>2026 did not start with one big AI moment.  It started with something more subtle:  AI tools stopped...</sub>
+  </td>
+</tr>
+
+<tr>
+  <td width=200>
     <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fafu2g6pub1l66nicvjzk.png width=200 />
   </td>
   <td>
@@ -98,16 +108,6 @@
   <td>
     <a href=https://dev.to/marxon/the-best-developer-ai-tools-of-2025-what-actually-worked-in-real-projects-397d><b>The Best Developer AI Tools of 2025 — What Actually Worked in Real Projects</b></a><br/>
     <sub>2025 was the year AI tools stopped being “nice to have” and became part of the default developer...</sub>
-  </td>
-</tr>
-
-<tr>
-  <td width=200>
-    <img src=https://media2.dev.to/dynamic/image/width=1000,height=420,fit=cover,gravity=auto,format=auto/https%3A%2F%2Fdev-to-uploads.s3.amazonaws.com%2Fuploads%2Farticles%2Fgtkxhi73zr8x5uga6pbk.png width=200 />
-  </td>
-  <td>
-    <a href=https://dev.to/marxon/developers-vs-ai-a-holiday-reflection-what-kind-of-developer-do-you-want-to-be-j1><b>Developers vs AI: A Holiday Reflection — What Kind of Developer Do You Want to Be?</b></a><br/>
-    <sub>December is a strange month for developers.  Deadlines slow down. Slack goes quiet. Pull requests...</sub>
   </td>
 </tr>
 </table>
